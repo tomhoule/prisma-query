@@ -8,11 +8,10 @@ mod sqlite;
 pub use mysql::MysqlManager;
 pub use postgres::PostgresManager;
 pub use sqlite::SqliteManager;
-pub use tokio_resource_pool::Pool;
+pub use tokio_resource_pool::{Builder, CheckOut, Manage, Pool};
 
 use crate::connector::{MysqlParams, PostgresParams, SqliteParams};
 use std::convert::TryFrom;
-use tokio_resource_pool::Builder;
 use url::Url;
 
 pub fn sqlite(path: &str) -> crate::Result<Pool<SqliteManager>> {
